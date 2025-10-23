@@ -1,0 +1,406 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 100px auto 40px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+aside {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 25px 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+main {
+  flex: 2;
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 30px 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2b4f81;
+  color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+header h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: popupIn 0.4s ease;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.popup-content p {
+  font-size: 1rem;
+  margin: 15px 0 25px;
+}
+
+.popup button {
+  background: #2b4f81;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.popup button:hover {
+  background: #1d3760;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+  transition: 0.3s;
+}
+
+.popup-close:hover {
+  color: #000;
+}
+
+.popup.success .popup-content {
+  border-top: 6px solid #4caf50;
+}
+.popup.error .popup-content {
+  border-top: 6px solid #f44336;
+}
+.popup.info .popup-content {
+  border-top: 6px solid #2196f3;
+}
+
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.edit-form label {
+  font-weight: 600;
+  color: #2b4f81;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.edit-form input:focus {
+  border-color: #2b4f81;
+  outline: none;
+}
+
+.edit-form button {
+  margin-top: 15px;
+  background: #2b4f81;
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.edit-form button:hover {
+  background: #1e3c66;
+}
+
+#bookForm {
+  background-color: #f0f4ff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #d7e3ff;
+}
+
+#bookForm h2 {
+  text-align: center;
+  color: #2b4f81;
+  margin-bottom: 20px;
+}
+
+#bookForm label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2b4f81;
+}
+
+#bookForm input[type="text"],
+#bookForm input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+#bookForm input[type="checkbox"],
+#bookForm label[for="bookFormIsComplete"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#bookForm input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+#bookForm button {
+  background-color: #2b4f81;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#bookForm button:hover {
+  background-color: #1e3c66;
+}
+
+#searchBook {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+#searchBook input {
+  width: 60%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+#searchBook input:focus {
+  border-color: #2b4f81;
+  outline: none;
+}
+
+#searchBook button {
+  background-color: #2b4f81;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+#searchBook button:hover {
+  background-color: #1e3c66;
+}
+
+.bookshelf-section {
+  margin-bottom: 40px;
+}
+
+.bookshelf-section h2 {
+  color: #2b4f81;
+  border-left: 5px solid #2b4f81;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+#incompleteBookList,
+#completeBookList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+[data-testid="bookItem"] {
+  background: #ffffff;
+  border: 1px solid #e1e5ee;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+[data-testid="bookItem"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-testid="bookItem"] h3 {
+  color: #2b4f81;
+  margin-bottom: 5px;
+}
+
+[data-testid="bookItem"] p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+[data-testid="bookItem"] div {
+  margin-top: 10px;
+}
+
+[data-testid="bookItem"] button {
+  color: #fff;
+  border: none;
+  padding: 8px 13px;
+  margin-right: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  font-size: 13px;
+}
+
+[data-testid="bookItemIsCompleteButton"] {
+  background-color: #28a745;
+}
+
+[data-testid="bookItemIsCompleteButton"]:hover {
+  background-color: #218838;
+}
+
+[data-testid="bookItemDeleteButton"] {
+  background-color: #e74c3c;
+}
+
+[data-testid="bookItemDeleteButton"]:hover {
+  background-color: #c0392b;
+}
+
+[data-testid="bookItemEditButton"] {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+[data-testid="bookItemEditButton"]:hover {
+  background-color: #d99128;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #777;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  main,
+  aside {
+    width: 100%;
+  }
+
+  #searchBook input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #searchBook button {
+    width: 100%;
+  }
+
+  [data-testid="bookItem"] {
+    padding: 15px;
+  }
+
+  [data-testid="bookItem"] button {
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes popupIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
